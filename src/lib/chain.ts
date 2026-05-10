@@ -38,19 +38,19 @@ const CONTRACTS: Record<NetworkId, Record<GameKey, string>> = {
     // below are the original deployment.
     pitch_wars:
       process.env.NEXT_PUBLIC_BRADBURY_PITCH_WARS ||
-      "0x1DfFa9635F7763f24d5d79E651eb7563C399f6DB",
+      "0x7CEfF93f76946045a19a6D33Af99b7A0d45bf8f1",
     joke_wars:
       process.env.NEXT_PUBLIC_BRADBURY_JOKE_WARS ||
-      "0x5E6187a68b5aa1432E779D0Ad42EAC1a41AB9f3A",
+      "0x3f637A45913d5cf917FEA4253e77C76337891782",
     excuse_wars:
       process.env.NEXT_PUBLIC_BRADBURY_EXCUSE_WARS ||
-      "0xb149F1D6262c77C133A65C9E06B36bc30032fd6D",
+      "0x00Edd046643839fa6Fa9bd548eD1d1206318564E",
     prediction_wars:
       process.env.NEXT_PUBLIC_BRADBURY_PREDICTION_WARS ||
-      "0x64b7A81b4720E5aa925b3B2846eb57B14ABAF4C9",
+      "0x8e9D9bAAF02d2972454d77f455A7E413394764ba",
     story_wars:
       process.env.NEXT_PUBLIC_BRADBURY_STORY_WARS ||
-      "0x79FEA3264EE4c22712234916Aea637cbaB1dc39C",
+      "0x47e62d3aCedb445f97513f8e83cd612b22d50FB0",
   },
 };
 
