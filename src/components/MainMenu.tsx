@@ -101,7 +101,7 @@ export default function MainMenu({ onCreateRoom, onJoinRoom, onLeaderboard }: Ma
             {theme === "dark" ? "Light" : "Dark"}
           </span>
         </button>
-        {mounted && <ConnectButton />}
+        {mounted && <ConnectButton chainStatus="none" />}
       </div>
 
       <div className="relative z-10 w-full max-w-3xl px-6 pt-24 pb-24 flex flex-col items-center">
@@ -162,7 +162,7 @@ export default function MainMenu({ onCreateRoom, onJoinRoom, onLeaderboard }: Ma
                 Connect your wallet to start playing
               </div>
               <div className="flex justify-center">
-                {mounted && <ConnectButton />}
+                {mounted && <ConnectButton chainStatus="none" />}
               </div>
             </div>
           )}
