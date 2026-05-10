@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* ── Dark theme (default) ──────────────────────────────────────────────── */
+:root {
+  --pw-bg: #06060e;
+  --pw-surface: #0d0d1a;
+  --pw-surface-2: #13131f;
+  --pw-border: rgba(255, 255, 255, 0.09);
+  --pw-gold: #fbbf24;
+  --pw-orange: #f97316;
+  --pw-cyan: #22d3ee;
+  --pw-violet: #a855f7;
+  --pw-rose: #f43f5e;
+  --pw-lime: #84cc16;
+  --pw-text: #e2e8f0;
+  --pw-text-muted: rgba(255, 255, 255, 0.55);
+  --pw-text-subtle: rgba(255, 255, 255, 0.35);
+  --pw-glow-gold: 0 0 30px rgba(251, 191, 36, 0.3);
+  --pw-glow-cyan: 0 0 30px rgba(34, 211, 238, 0.3);
+  --pw-glow-violet: 0 0 30px rgba(168, 85, 247, 0.3);
+  --pw-card-bg: rgba(255, 255, 255, 0.03);
+  --pw-card-border: rgba(255, 255, 255, 0.09);
+  --pw-step-bg: rgba(255, 255, 255, 0.05);
+  --pw-step-border: rgba(255, 255, 255, 0.1);
+  --pw-step-text: rgba(255, 255, 255, 0.75);
+  --pw-label: rgba(255, 255, 255, 0.45);
+  --pw-divider: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Light theme ────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --pw-bg: #f4f4f8;
+  --pw-surface: #ffffff;
+  --pw-surface-2: #eeeef4;
+  --pw-border: rgba(0, 0, 0, 0.1);
+  --pw-text: #0f0f1a;
+  --pw-text-muted: rgba(0, 0, 0, 0.65);
+  --pw-text-subtle: rgba(0, 0, 0, 0.45);
+  --pw-card-bg: rgba(0, 0, 0, 0.03);
+  --pw-card-border: rgba(0, 0, 0, 0.1);
+  --pw-step-bg: rgba(0, 0, 0, 0.04);
+  --pw-step-border: rgba(0, 0, 0, 0.12);
+  --pw-step-text: rgba(0, 0, 0, 0.8);
+  --pw-label: rgba(0, 0, 0, 0.5);
+  --pw-divider: rgba(0, 0, 0, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--pw-bg);
+  --color-foreground: var(--pw-text);
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--pw-bg);
+  color: var(--pw-text);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Noise overlay — only in dark mode */
+:root body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+[data-theme="light"] body::before {
+  display: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pw-divider);
+  border-radius: 2px;
+}
+
+/* Pitch textarea */
+.pitch-textarea {
+  background: var(--pw-card-bg);
+  border: 1px solid var(--pw-card-border);
+  border-radius: 12px;
+  color: var(--pw-text);
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 16px;
+  resize: none;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pitch-textarea:focus {
+  outline: none;
+  border-color: var(--pw-gold);
+  box-shadow: var(--pw-glow-gold);
+}
+
+.pitch-textarea::placeholder {
+  color: var(--pw-label);
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-count-up {
+  animation: count-up 0.4s ease-out forwards;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, var(--pw-gold), var(--pw-orange), var(--pw-gold));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
